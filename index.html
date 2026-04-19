@@ -1,0 +1,1580 @@
+Absolutely — here’s a more **professional, modern, animated** version of the combined salon website.
+
+It includes:
+- premium hero section
+- animated reveal on scroll
+- glassmorphism navbar
+- floating background effects
+- animated stats counters
+- polished service cards
+- testimonial slider
+- responsive mobile menu
+- better visual hierarchy
+
+You can paste this into a single `index.html` file and open it in the browser.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manchester Premium Salons | Sassoon & ROX</title>
+  <meta name="description" content="Discover Sassoon Hair Salon and ROX Men's Salon in Manchester city centre. Premium cuts, styling, colouring, grooming and more." />
+  <style>
+    :root {
+      --bg: #0f1117;
+      --bg-soft: #161a23;
+      --card: rgba(255,255,255,0.06);
+      --card-border: rgba(255,255,255,0.12);
+      --text: #f5f7fb;
+      --muted: #b9c0d0;
+      --gold: #d9a86c;
+      --gold-dark: #b9874a;
+      --red: #df4b63;
+      --red-dark: #bf3950;
+      --blue: #6f8cff;
+      --shadow: 0 20px 60px rgba(0,0,0,0.35);
+      --radius: 22px;
+      --radius-sm: 14px;
+      --container: 1200px;
+      --transition: 0.35s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(217,168,108,0.16), transparent 30%),
+        radial-gradient(circle at 85% 20%, rgba(111,140,255,0.14), transparent 25%),
+        radial-gradient(circle at 50% 80%, rgba(223,75,99,0.10), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(100% - 2rem, var(--container));
+      margin-inline: auto;
+    }
+
+    .section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 18px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 60px;
+      font-size: 1.02rem;
+    }
+
+    /* Floating background shapes */
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(30px);
+      opacity: 0.3;
+      z-index: 0;
+      pointer-events: none;
+      animation: float 9s ease-in-out infinite;
+    }
+
+    .orb.one {
+      width: 220px;
+      height: 220px;
+      background: rgba(217,168,108,0.35);
+      top: 80px;
+      left: -60px;
+    }
+
+    .orb.two {
+      width: 280px;
+      height: 280px;
+      background: rgba(223,75,99,0.25);
+      top: 40%;
+      right: -100px;
+      animation-delay: 1.5s;
+    }
+
+    .orb.three {
+      width: 180px;
+      height: 180px;
+      background: rgba(111,140,255,0.25);
+      bottom: 10%;
+      left: 10%;
+      animation-delay: 3s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-20px) translateX(12px); }
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(calc(100% - 1rem), 1240px);
+      z-index: 1000;
+      backdrop-filter: blur(18px);
+      background: rgba(12, 14, 20, 0.62);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 20px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.25);
+      transition: var(--transition);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 18px;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--gold), var(--red));
+      color: white;
+      font-weight: 800;
+      box-shadow: 0 10px 20px rgba(217,168,108,0.2);
+    }
+
+    .brand small {
+      display: block;
+      color: var(--muted);
+      font-weight: 500;
+      font-size: 0.78rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.95rem;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--gold), var(--red));
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 14px 20px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform var(--transition), background var(--transition), border var(--transition), box-shadow var(--transition);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+      color: #111;
+      box-shadow: 0 12px 30px rgba(217,168,108,0.18);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--red), var(--red-dark));
+      color: white;
+      box-shadow: 0 12px 30px rgba(223,75,99,0.18);
+    }
+
+    .btn-outline {
+      border-color: rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+    }
+
+    .mobile-toggle {
+      display: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: white;
+      cursor: pointer;
+    }
+
+    .mobile-menu {
+      display: none;
+      padding: 0 18px 18px;
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      margin-top: 10px;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      align-items: center;
+      padding-top: 120px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+      margin-bottom: 18px;
+      font-size: 0.92rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 5.6rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(135deg, #fff, #d2d7e5 45%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 640px;
+      font-size: 1.08rem;
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 34px;
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .stat-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      backdrop-filter: blur(16px);
+      border-radius: var(--radius-sm);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.12), transparent);
+      transform: translateX(-100%);
+      animation: shine 4.5s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-120%); }
+      50%, 100% { transform: translateX(120%); }
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-visual {
+      position: relative;
+      min-height: 620px;
+    }
+
+    .hero-panel {
+      position: absolute;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .panel-main {
+      inset: 0 0 70px 60px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04)),
+        linear-gradient(135deg, rgba(217,168,108,0.22), rgba(111,140,255,0.18));
+      padding: 26px;
+    }
+
+    .panel-small {
+      width: 240px;
+      height: 200px;
+      left: 0;
+      bottom: 0;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04)),
+        linear-gradient(135deg, rgba(223,75,99,0.18), rgba(217,168,108,0.14));
+      padding: 20px;
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .panel-badge {
+      position: absolute;
+      right: -10px;
+      top: 40px;
+      width: 180px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(17,19,28,0.88);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .panel-main .top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 26px;
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: var(--text);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .hero-cards {
+      display: grid;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .mini-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.09);
+    }
+
+    .mini-card strong {
+      display: block;
+      font-size: 1rem;
+    }
+
+    .mini-card span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .stars {
+      color: #ffcf69;
+      letter-spacing: 2px;
+      font-size: 0.95rem;
+    }
+
+    /* Compare strip */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .compare-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: var(--radius);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform var(--transition), border var(--transition);
+    }
+
+    .compare-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.15);
+    }
+
+    .compare-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(217,168,108,0.08), transparent 40%, rgba(223,75,99,0.08));
+      pointer-events: none;
+    }
+
+    .compare-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .badge.gold { background: rgba(217,168,108,0.14); color: #ffd8a8; }
+    .badge.red { background: rgba(223,75,99,0.14); color: #ffbac4; }
+
+    .compare-card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 8px;
+    }
+
+    .compare-card p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .feature-list li {
+      list-style: none;
+      color: #e8ecf7;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature-list li::before {
+      content: "✓";
+      width: 22px;
+      height: 22px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      font-size: 0.8rem;
+      background: rgba(255,255,255,0.08);
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* Salon showcase sections */
+    .salon-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .salon-grid.reverse {
+      grid-template-columns: 1.05fr 0.95fr;
+    }
+
+    .visual-card {
+      min-height: 520px;
+      border-radius: 28px;
+      background:
+        linear-gradient(160deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04)),
+        linear-gradient(135deg, rgba(217,168,108,0.18), rgba(18,20,28,0.75));
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+    }
+
+    .visual-card.rox {
+      background:
+        linear-gradient(160deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04)),
+        linear-gradient(135deg, rgba(223,75,99,0.18), rgba(18,20,28,0.75));
+    }
+
+    .visual-card::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      right: -60px;
+      bottom: -60px;
+      background: rgba(255,255,255,0.07);
+      filter: blur(10px);
+    }
+
+    .mock-photo {
+      height: 100%;
+      min-height: 440px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.16), transparent 30%),
+        linear-gradient(145deg, rgba(255,255,255,0.07), rgba(255,255,255,0.02)),
+        #1b1f2b;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 26px;
+      position: relative;
+    }
+
+    .mock-photo h4 {
+      font-size: 1.8rem;
+      letter-spacing: -0.03em;
+    }
+
+    .mock-photo p {
+      color: var(--muted);
+      max-width: 320px;
+    }
+
+    .glass-chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .glass-chip {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #f5f7fb;
+      font-size: 0.88rem;
+    }
+
+    .salon-content .label {
+      color: var(--gold);
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      font-weight: 700;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+
+    .salon-content.rox .label {
+      color: #ff95a6;
+    }
+
+    .salon-content h2 {
+      text-align: left;
+      margin-bottom: 16px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+    }
+
+    .salon-content p {
+      color: var(--muted);
+      margin-bottom: 24px;
+      font-size: 1.03rem;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .info-box {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .info-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.88rem;
+      margin-bottom: 6px;
+    }
+
+    .info-box strong {
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .service-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 18px;
+      transition: transform var(--transition), border var(--transition), background var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(255,255,255,0.16);
+      background: rgba(255,255,255,0.08);
+    }
+
+    .service-card h4 {
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .price {
+      display: inline-block;
+      margin-top: 10px;
+      color: #fff;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(223,75,99,0.14);
+    }
+
+    /* Testimonials */
+    .testimonials-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-track {
+      display: flex;
+      transition: transform 0.6s ease;
+    }
+
+    .testimonial {
+      min-width: 100%;
+      padding: 0 4px;
+    }
+
+    .testimonial-card {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 34px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .quote {
+      font-size: clamp(1.2rem, 2vw, 1.8rem);
+      line-height: 1.5;
+      margin-bottom: 18px;
+      color: #f7f8fc;
+    }
+
+    .testimonial small {
+      color: var(--muted);
+      display: block;
+    }
+
+    .slider-controls {
+      margin-top: 26px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      background: rgba(255,255,255,0.18);
+      transition: var(--transition);
+    }
+
+    .dot.active {
+      background: linear-gradient(135deg, var(--gold), var(--red));
+      transform: scale(1.15);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+    }
+
+    .contact-card,
+    .map-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .contact-columns {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .contact-box {
+      padding: 20px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .contact-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-bottom: 8px;
+    }
+
+    .contact-box strong {
+      line-height: 1.5;
+      display: block;
+    }
+
+    .map-placeholder {
+      min-height: 100%;
+      border-radius: 20px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03)),
+        #121621;
+      border: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      place-items: center;
+      color: var(--muted);
+      text-align: center;
+      padding: 30px;
+    }
+
+    .footer {
+      padding: 30px 0 50px;
+      color: var(--muted);
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 1100px) {
+      .hero-grid,
+      .salon-grid,
+      .salon-grid.reverse,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 540px;
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .nav-links,
+      .nav-actions {
+        display: none;
+      }
+
+      .mobile-toggle {
+        display: inline-grid;
+        place-items: center;
+      }
+
+      .mobile-menu.show {
+        display: block;
+      }
+
+      .hero {
+        padding-top: 140px;
+      }
+
+      .hero-stats,
+      .contact-columns,
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-main {
+        inset: 0 0 60px 20px;
+      }
+
+      .panel-small {
+        width: 200px;
+        height: 170px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .section {
+        padding: 80px 0;
+      }
+
+      .hero h1 {
+        font-size: 2.7rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-visual {
+        min-height: 460px;
+      }
+
+      .panel-badge {
+        position: static;
+        margin-top: 18px;
+        width: 100%;
+      }
+
+      .panel-main {
+        inset: 0;
+      }
+
+      .panel-small {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb one"></div>
+  <div class="orb two"></div>
+  <div class="orb three"></div>
+
+  <header class="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="brand">
+        <div class="brand-mark">M</div>
+        <div>
+          Manchester Premium Salons
+          <small>Sassoon Hair Salon & ROX Men's Salon</small>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#sassoon">Sassoon</a></li>
+        <li><a href="#rox">ROX</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <a href="#sassoon" class="btn btn-outline">Explore Sassoon</a>
+        <a href="#rox" class="btn btn-secondary">Explore ROX</a>
+      </div>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">
+        ☰
+      </button>
+    </div>
+
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="#overview">Overview</a>
+      <a href="#sassoon">Sassoon</a>
+      <a href="#rox">ROX</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero section" id="home">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div class="eyebrow">Luxury styling • Premium grooming • Manchester city centre</div>
+          <h1>
+            Two standout salons.
+            <span>One premium experience.</span>
+          </h1>
+          <p>
+            Discover the elegance of Sassoon Hair Salon and the modern edge of ROX Men's Salon.
+            From colouring and cut & finish to beard tidy, shave and men’s restyling, this showcase
+            brings both brands together in one polished destination.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#sassoon" class="btn btn-primary">Visit Sassoon</a>
+            <a href="#rox" class="btn btn-secondary">Visit ROX</a>
+            <a href="#contact" class="btn btn-outline">Contact & Location</a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-card">
+              <div class="stat-number counter" data-target="294">0</div>
+              <div class="stat-label">Sassoon reviews</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number counter" data-target="106">0</div>
+              <div class="stat-label">ROX reviews</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">4.8 / 4.7</div>
+              <div class="stat-label">Google ratings</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="hero-panel panel-main">
+            <div class="top">
+              <span class="pill">Manchester Premium Salons</span>
+              <span class="pill">Open Mon onward</span>
+            </div>
+
+            <div class="hero-cards">
+              <div class="mini-card">
+                <div>
+                  <strong>Sassoon Hair Salon</strong>
+                  <span>Luxury styling, colouring, cut & finish</span>
+                </div>
+                <div>
+                  <div class="stars">★★★★★</div>
+                  <span>4.8</span>
+                </div>
+              </div>
+
+              <div class="mini-card">
+                <div>
+                  <strong>ROX Men's Salon</strong>
+                  <span>Modern men’s grooming & re-style</span>
+                </div>
+                <div>
+                  <div class="stars">★★★★☆</div>
+                  <span>4.7</span>
+                </div>
+              </div>
+
+              <div class="mini-card">
+                <div>
+                  <strong>Prime city centre locations</strong>
+                  <span>Marsden St & Lloyd St, Manchester</span>
+                </div>
+                <div class="pill">2 salons</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-panel panel-small">
+            <h3 style="font-size:1.6rem;margin-bottom:8px;">Style meets precision</h3>
+            <p style="color:var(--muted);font-size:0.95rem;">
+              Refined salon presentation with premium services and strong customer trust.
+            </p>
+          </div>
+
+          <div class="panel-badge">
+            <strong style="display:block;font-size:1rem;margin-bottom:6px;">Professional finish</strong>
+            <small style="color:var(--muted);line-height:1.6;">
+              High-class styling at Sassoon and trend-led men’s grooming at ROX.
+            </small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OVERVIEW -->
+    <section class="section" id="overview">
+      <div class="container">
+        <h2 class="section-title reveal">Choose the right salon for your style</h2>
+        <p class="section-subtitle reveal">
+          Whether you want a refined cut and colour or a sharp men’s re-style and beard grooming,
+          both salons offer standout service in Manchester city centre.
+        </p>
+
+        <div class="compare-grid">
+          <article class="compare-card reveal">
+            <div class="compare-top">
+              <div>
+                <span class="badge gold">Luxury Hair Salon</span>
+                <h3>Sassoon Hair Salon</h3>
+              </div>
+              <div style="text-align:right;">
+                <div class="stars">★★★★★</div>
+                <strong>4.8 (294)</strong>
+              </div>
+            </div>
+            <p>
+              Known for professional, efficient and high-class service with an excellent finish.
+            </p>
+            <ul class="feature-list">
+              <li>Hair colouring and colour consultation</li>
+              <li>Cut & finish, blow dry and styling</li>
+              <li>Bleach & toner, luxury treatment</li>
+              <li>Perm & relaxer, repair service</li>
+              <li>Student & children options</li>
+            </ul>
+            <a href="#sassoon" class="btn btn-primary">View Sassoon</a>
+          </article>
+
+          <article class="compare-card reveal">
+            <div class="compare-top">
+              <div>
+                <span class="badge red">Men's Grooming Salon</span>
+                <h3>ROX Men's Salon</h3>
+              </div>
+              <div style="text-align:right;">
+                <div class="stars">★★★★☆</div>
+                <strong>4.7 (106)</strong>
+              </div>
+            </div>
+            <p>
+              A trendy, modern salon with a cool atmosphere, friendly staff and quality grooming.
+            </p>
+            <ul class="feature-list">
+              <li>Haircut, full re-style and student cuts</li>
+              <li>Beard tidy, beard trim and shave</li>
+              <li>Hair colouring and hairstyling</li>
+              <li>Scalp and full head micro pigmentation</li>
+              <li>Modern salon quality finish</li>
+            </ul>
+            <a href="#rox" class="btn btn-secondary">View ROX</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- SASSOON -->
+    <section class="section" id="sassoon">
+      <div class="container salon-grid">
+        <div class="visual-card reveal">
+          <div class="mock-photo">
+            <div>
+              <span class="pill">Sassoon Hair Salon</span>
+              <h4>Elegant styling with a refined salon feel</h4>
+              <p>
+                A premium salon experience focused on beautiful finishing, colouring expertise
+                and polished service.
+              </p>
+            </div>
+
+            <div>
+              <div class="glass-chip-row">
+                <span class="glass-chip">Hair Colouring</span>
+                <span class="glass-chip">Cut & Finish</span>
+                <span class="glass-chip">Blow Dry</span>
+                <span class="glass-chip">Luxury Treatment</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="salon-content reveal">
+          <span class="label">Featured salon</span>
+          <h2>Sassoon Hair Salon</h2>
+          <p>
+            Rated 4.8 from 294 reviews, Sassoon Hair Salon is positioned as a high-quality choice
+            for clients looking for premium haircare, professional service and a polished final look.
+          </p>
+
+          <div class="info-grid">
+            <div class="info-box">
+              <span>Address</span>
+              <strong>1 Marsden St, Manchester M2 1HW, United Kingdom</strong>
+            </div>
+            <div class="info-box">
+              <span>Phone</span>
+              <strong>+44 161 524 1500</strong>
+            </div>
+            <div class="info-box">
+              <span>Hours</span>
+              <strong>Closed • Opens 9am Monday</strong>
+            </div>
+            <div class="info-box">
+              <span>Highlights</span>
+              <strong>Professional, personal, efficient, high-class finish</strong>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="tel:+441615241500" class="btn btn-primary">Call Sassoon</a>
+            <a href="#contact" class="btn btn-outline">View location</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" style="margin-top:40px;">
+        <div class="services-grid">
+          <div class="service-card reveal"><h4>Hair Colouring</h4><p>Professional colouring services and tonal refresh options.</p></div>
+          <div class="service-card reveal"><h4>Hairstyling</h4><p>Tailored styling designed to complement your look.</p></div>
+          <div class="service-card reveal"><h4>Bleach & Toner</h4><p>Lightening and tone correction with salon finishing.</p></div>
+          <div class="service-card reveal"><h4>Blow Dry</h4><p>Smooth, polished blow dry for a finished salon feel.</p></div>
+          <div class="service-card reveal"><h4>Colour Consultation</h4><p>Personal consultation for colour planning and change.</p></div>
+          <div class="service-card reveal"><h4>Cut & Finish</h4><p>Precision cut paired with refined finishing service.</p></div>
+          <div class="service-card reveal"><h4>Cut & Colour</h4><p>Combined styling and colour transformation service.</p></div>
+          <div class="service-card reveal"><h4>Luxury Treatment</h4><p>Nourishing treatment for shine, softness and repair.</p></div>
+          <div class="service-card reveal"><h4>Perm & Relaxer</h4><p>Texture management and smoothing salon solutions.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROX -->
+    <section class="section" id="rox">
+      <div class="container salon-grid reverse">
+        <div class="salon-content rox reveal">
+          <span class="label">Men's grooming</span>
+          <h2>ROX Men's Salon</h2>
+          <p>
+            ROX Men's Salon is a modern, stylish destination for men’s grooming in Manchester.
+            With a 4.7 rating from 106 reviews, it stands out for friendly staff, trendy styling
+            and a proper salon-quality haircut experience.
+          </p>
+
+          <div class="info-grid">
+            <div class="info-box">
+              <span>Address</span>
+              <strong>16 Lloyd St, Manchester M2 5WA, United Kingdom</strong>
+            </div>
+            <div class="info-box">
+              <span>Phone</span>
+              <strong>+44 161 839 3615</strong>
+            </div>
+            <div class="info-box">
+              <span>Hours</span>
+              <strong>Closed • Opens 10am Monday</strong>
+            </div>
+            <div class="info-box">
+              <span>Highlights</span>
+              <strong>Cool atmosphere, friendly staff, trendy styling</strong>
+            </div>
+          </div>
+
+          <div class="hero-actions">
+            <a href="tel:+441618393615" class="btn btn-secondary">Call ROX</a>
+            <a href="#contact" class="btn btn-outline">View location</a>
+          </div>
+        </div>
+
+        <div class="visual-card rox reveal">
+          <div class="mock-photo">
+            <div>
+              <span class="pill">ROX Men's Salon</span>
+              <h4>Sharp, modern grooming with confidence</h4>
+              <p>
+                Precision cuts, beard grooming and men’s re-styling in a cool city-centre salon setting.
+              </p>
+            </div>
+
+            <div>
+              <div class="glass-chip-row">
+                <span class="glass-chip">Haircut</span>
+                <span class="glass-chip">Full Re-Style</span>
+                <span class="glass-chip">Beard Tidy</span>
+                <span class="glass-chip">Shave</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container" style="margin-top:40px;">
+        <div class="services-grid">
+          <div class="service-card reveal"><h4>Haircut</h4><p>Professional salon haircut with clean finishing.</p><span class="price">£28</span></div>
+          <div class="service-card reveal"><h4>Students Haircut</h4><p>Sharp student cut with salon precision.</p><span class="price">£25</span></div>
+          <div class="service-card reveal"><h4>Full Re-Style</h4><p>A fresh new look with shape and direction.</p><span class="price">£30</span></div>
+          <div class="service-card reveal"><h4>Beard Tidy</h4><p>Clean beard detailing and shape refinement.</p><span class="price">£10</span></div>
+          <div class="service-card reveal"><h4>Shave</h4><p>Traditional shave and grooming finish.</p><span class="price">£15+</span></div>
+          <div class="service-card reveal"><h4>Beard Trim</h4><p>Defined trim for a polished appearance.</p></div>
+          <div class="service-card reveal"><h4>Hair Colouring</h4><p>Colour services tailored for men’s styling.</p></div>
+          <div class="service-card reveal"><h4>Hairstyling</h4><p>Modern styling to suit your look and texture.</p></div>
+          <div class="service-card reveal"><h4>Scalp Micro Pigmentation</h4><p>Specialist service for a fuller visual effect.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="section" id="reviews">
+      <div class="container">
+        <h2 class="section-title reveal">What clients are saying</h2>
+        <p class="section-subtitle reveal">
+          Real feedback highlights the atmosphere, service quality and finish that make both salons stand out.
+        </p>
+
+        <div class="testimonials-wrap reveal">
+          <div class="testimonial-track" id="testimonialTrack">
+            <div class="testimonial">
+              <div class="testimonial-card">
+                <div class="stars" style="margin-bottom:14px;">★★★★★</div>
+                <div class="quote">“Professional, efficient, personal, high-class service with an excellent finish.”</div>
+                <small>Sassoon Hair Salon review</small>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="testimonial-card">
+                <div class="stars" style="margin-bottom:14px;">★★★★★</div>
+                <div class="quote">“Best place in Manchester to get your hair cuts and styled.”</div>
+                <small>Sassoon Hair Salon review</small>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="testimonial-card">
+                <div class="stars" style="margin-bottom:14px;">★★★★☆</div>
+                <div class="quote">“Great service, cool atmosphere, friendly staff and trendy hair styling.”</div>
+                <small>ROX Men's Salon review</small>
+              </div>
+            </div>
+
+            <div class="testimonial">
+              <div class="testimonial-card">
+                <div class="stars" style="margin-bottom:14px;">★★★★☆</div>
+                <div class="quote">“Highly recommend this place if you want a proper salon quality haircut.”</div>
+                <small>ROX Men's Salon review</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="slider-controls" id="sliderDots">
+            <button class="dot active" data-index="0"></button>
+            <button class="dot" data-index="1"></button>
+            <button class="dot" data-index="2"></button>
+            <button class="dot" data-index="3"></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section" id="contact">
+      <div class="container">
+        <h2 class="section-title reveal">Contact & locations</h2>
+        <p class="section-subtitle reveal">
+          Both salons are located in Manchester city centre and are easy to reach for appointments and walk-ins.
+        </p>
+
+        <div class="contact-grid">
+          <div class="contact-card reveal">
+            <h3 style="font-size:1.8rem;margin-bottom:10px;">Salon contact details</h3>
+            <p style="color:var(--muted);margin-bottom:20px;">
+              Use the details below to call each salon directly or adapt this section with live booking links.
+            </p>
+
+            <div class="contact-columns">
+              <div class="contact-box">
+                <span>Sassoon Hair Salon</span>
+                <strong>1 Marsden St, Manchester M2 1HW</strong>
+                <strong style="margin-top:8px;">+44 161 524 1500</strong>
+                <strong style="margin-top:8px;">Opens 9am Monday</strong>
+              </div>
+
+              <div class="contact-box">
+                <span>ROX Men's Salon</span>
+                <strong>16 Lloyd St, Manchester M2 5WA</strong>
+                <strong style="margin-top:8px;">+44 161 839 3615</strong>
+                <strong style="margin-top:8px;">Opens 10am Monday</strong>
+              </div>
+            </div>
+
+            <div class="hero-actions" style="margin-top:24px;">
+              <a href="tel:+441615241500" class="btn btn-primary">Call Sassoon</a>
+              <a href="tel:+441618393615" class="btn btn-secondary">Call ROX</a>
+            </div>
+          </div>
+
+          <div class="map-card reveal">
+            <div class="map-placeholder">
+              <div>
+                <h3 style="color:var(--text);margin-bottom:12px;">Map placeholder</h3>
+                <p>
+                  Replace this area with an embedded Google Map showing:
+                  <br><br>
+                  <strong>Sassoon Hair Salon</strong> – 1 Marsden St, Manchester M2 1HW
+                  <br>
+                  <strong>ROX Men's Salon</strong> – 16 Lloyd St, Manchester M2 5WA
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      © 2026 Manchester Premium Salons — Showcase for Sassoon Hair Salon & ROX Men's Salon
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    mobileToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('show');
+    });
+
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.remove('show'));
+    });
+
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // Animated counters
+    const counters = document.querySelectorAll('.counter');
+    let countersStarted = false;
+
+    function runCounters() {
+      if (countersStarted) return;
+      countersStarted = true;
+
+      counters.forEach(counter => {
+        const target = +counter.dataset.target;
+        let count = 0;
+        const step = Math.max(1, Math.ceil(target / 60));
+
+        const update = () => {
+          count += step;
+          if (count >= target) {
+            counter.textContent = target;
+          } else {
+            counter.textContent = count;
+            requestAnimationFrame(update);
+          }
+        };
+        update();
+      });
+    }
+
+    const heroStats = document.querySelector('.hero-stats');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) runCounters();
+      });
+    }, { threshold: 0.3 });
+
+    if (heroStats) counterObserver.observe(heroStats);
+
+    // Active nav on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    function activateNav() {
+      let scrollY = window.pageYOffset;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 160;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + sectionId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }
+
+    window.addEventListener('scroll', activateNav);
+    activateNav();
+
+    // Testimonial slider
+    const track = document.getElementById('testimonialTrack');
+    const dots = document.querySelectorAll('.dot');
+    let currentSlide = 0;
+    const totalSlides = dots.length;
+
+    function goToSlide(index) {
+      currentSlide = index;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach(dot => dot.classList.remove('active'));
+      dots[index].classList.add('active');
+    }
+
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        goToSlide(+dot.dataset.index);
+      });
+    });
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      goToSlide(currentSlide);
+    }, 4500);
+  </script>
+</body>
+</html>
+```
+
+### If you want, I can also make this into:
+1. **a luxury black/gold version**
+2. **a React website**
+3. **a version with real images**
+4. **a version with booking buttons and Google Maps embedded**
+5. **separate pages for Sassoon and ROX instead of one combined page**
+
+If you want, I can now create an even more premium **black + gold cinematic version**.
